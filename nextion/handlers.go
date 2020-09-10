@@ -13,7 +13,7 @@ func stringToHexBytes(s string) []byte {
 		log.Println(err)
 	}
 
-	for _, b := range END {
+	for _, b := range EndNextionMessage {
 		decoded = append(decoded, b)
 	}
 

@@ -4,7 +4,7 @@ import (
 	"encoding/hex"
 )
 
-var END = []byte{0xFF, 0xFF, 0xFF} // All instructions over serial: are terminated with three bytes of 0xFF 0xFF 0xFF
+var EndNextionMessage = []byte{0xFF, 0xFF, 0xFF} // All instructions over serial: are terminated with three bytes of 0xFF 0xFF 0xFF
 
 const (
 	ERROR   = 0x00 // Returned when instruction sent by user has failed
@@ -14,9 +14,9 @@ const (
 func CheckReturnedCode(code []byte) string {
 	switch code[0] {
 	case ERROR:
-		return "Error command"
+		return "Error command (0x00)"
 	case SUCCESS:
-		return "Command apply"
+		return "Command apply (0x01)"
 	default:
 		return hex.EncodeToString(code)
 	}

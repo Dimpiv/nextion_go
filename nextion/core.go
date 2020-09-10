@@ -43,7 +43,7 @@ func (d *DisplayNextion) Start() {
 
 		result = append(result, buf[0])
 
-		if i := bytes.Index(result, END); i >= 0 {
+		if i := bytes.Index(result, EndNextionMessage); i >= 0 {
 			//log.Printf("Response hex: %v\n", CheckReturnedCode(result[0:i]))
 			d.Output <- CheckReturnedCode(result[0:i])
 			result = nil
