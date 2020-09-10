@@ -34,7 +34,8 @@ func main() {
 			case command := <-consoleInput:
 				dp.Input <- command
 			case r := <-dp.Output:
-				fmt.Printf("Response from Nextion: %s\n", r)
+				fmt.Printf("\rResponse from Nextion: %s\n", r)
+				fmt.Print("Enter command: ")
 			}
 		}
 	}()
