@@ -2,8 +2,10 @@ package main
 
 import (
 	"Nextion/nextion"
+	"bufio"
 	"fmt"
-	"time"
+	"log"
+	"os"
 )
 
 func main() {
@@ -12,16 +14,28 @@ func main() {
 		Baud: 9600,
 	}
 
+	consoleInput := make(chan string)
+
 	go func() {
-		t1 := time.NewTicker(time.Second * 5)
+		for {
+			fmt.Print("Enter command: ")
+			reader := bufio.NewReader(os.Stdin)
+			t, err := reader.ReadString('\n')
+			if err != nil {
+				log.Fatal(err)
+			}
+			consoleInput <- t[:len(t)-1]
+		}
+	}()
+
+	go func() {
 		for {
 			select {
-			case <-t1.C:
-				dp.Input <- "page page0"
+			case command := <-consoleInput:
+				dp.Input <- command
 			case r := <-dp.Output:
 				fmt.Printf("Response from Nextion: %s\n", r)
 			}
-
 		}
 	}()
 

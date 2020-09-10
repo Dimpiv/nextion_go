@@ -38,7 +38,7 @@ func (d *DisplayNextion) Start() {
 	for {
 		_, err := d.serialPort.Read(buf)
 		if err != nil {
-			log.Print(err)
+			log.Panic(err)
 		}
 
 		result = append(result, buf[0])
@@ -56,7 +56,7 @@ func (d *DisplayNextion) SendStringToNextion() {
 		select {
 		case s := <-d.Input:
 			comm := stringToHexBytes(s)
-			log.Printf("Send command: %s\n", comm[:len(comm)-3])
+			//log.Printf("Send command: %s\n", comm[:len(comm)-3])
 			_, err := d.serialPort.Write(comm)
 			if err != nil {
 				log.Fatal(err)
