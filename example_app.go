@@ -10,7 +10,7 @@ import (
 
 func main() {
 	dp := nextion.DisplayNextion{
-		Port: "COM3",
+		Port: "/dev/ttyUSB0",
 		Baud: 9600,
 	}
 
