@@ -1,11 +1,12 @@
 package main
 
 import (
-	"Nextion/nextion"
 	"bufio"
 	"fmt"
 	"log"
 	"os"
+
+	"github.com/Dimpiv/nextion_go/nextion"
 )
 
 func main() {
