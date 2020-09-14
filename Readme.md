@@ -2,9 +2,7 @@
 ___
 ### WIP....
 
-####Install
-
-`go get github.com/Dimpiv/nextion_go/nextion`
+Install:  `go get github.com/Dimpiv/nextion_go/nextion`
 ___
 
 Example use: `example_app.go`
